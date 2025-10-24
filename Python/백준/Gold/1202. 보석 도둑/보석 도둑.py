@@ -1,20 +1,23 @@
 import sys
-from heapq import heappush, heappop
-input = sys.stdin.readline
 sys.setrecursionlimit(10**6)
+from heapq import heappush, heappop
+
+input = sys.stdin.readline
 
 N, K = map(int, input().split())
-gems = [list(map(int, input().split())) for _ in range(N)]
+
+jewels = [list(map(int, input().split())) for _ in range(N)]
 bags = [int(input()) for _ in range(K)]
-gems.sort()
+
+jewels.sort()
 bags.sort()
-sumValue = 0
-maxheap = []
+heap = []
+ans = 0
 
 for bag in bags:
-  while gems and gems[0][0] <= bag:
-    heappush(maxheap, -gems[0][1])
-    heappop(gems)
-  if maxheap:
-    sumValue -= heappop(maxheap)
-print(sumValue)
+  while jewels and jewels[0][0] <= bag:
+    heappush(heap, -jewels[0][1])
+    heappop(jewels)
+  if heap:
+    ans -= heappop(heap)
+print(ans)
