@@ -1,0 +1,11 @@
+# -- 코드를 입력하세요
+# SELECT
+#     DATETIME as 시간
+# FROM 
+#     ANIMAL_INS
+# WHERE
+#     DATETIME = (SELECT max(DATETIME) FROM ANIMAL_INS)
+
+
+SELECT MAX(DATETIME) as 시간
+FROM ANIMAL_INS 
