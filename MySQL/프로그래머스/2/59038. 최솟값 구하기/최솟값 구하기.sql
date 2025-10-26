@@ -1,5 +1,10 @@
--- 코드를 입력하세요
-SELECT
-    min(DATETIME) as 시간
-FROM
-    ANIMAL_INS
+# -- 코드를 입력하세요
+# SELECT
+#     min(DATETIME) as 시간
+# FROM
+#     ANIMAL_INS
+
+
+SELECT DATETIMe as 시간
+FROM ANIMAL_INS
+WHERE DATETIME = (SELECT MIN(DATETIME) FROM ANIMAL_INS)
