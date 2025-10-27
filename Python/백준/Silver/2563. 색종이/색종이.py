@@ -1,15 +1,19 @@
-L = 100 # 가로세로 길이 100
-l = 10 # 붙이는 색종이의 길이
-N = int(input()) # 붙일 종이의 개수
-board = [[0] * 101 for _ in range(101)] # 0번 인덱스 안쓸려고 +1 해줌
-arr = [list(map(int, input().split())) for _ in range(N)]
-cnt = 0 # 종이를 붙인 검은 영역의 넓이
-for paper in arr:
-    for i in range(paper[1],paper[1]+10):
-        for j in range(paper[0],paper[0]+10):
-            board[i][j] = 1
+import sys
+sys.setrecursionlimit(10**6)
 
-for i in range(L):
-    cnt += board[i].count(1)
+input = sys.stdin.readline
+N = int(input())
 
+# y x 순서임
+answer = [[0]*101 for _ in range(101)]
+arr =[list(map(int, input().split())) for _ in range(N)]
+cnt = 0
+for y, x in arr:
+  for i in range(x, x+10):
+    if 0 <= i < 101:
+      for j in range(y, y+10):
+        if 0 <= j < 101:
+          if answer[i][j] == 0:
+            answer[i][j] = 1
+            cnt += 1
 print(cnt)
