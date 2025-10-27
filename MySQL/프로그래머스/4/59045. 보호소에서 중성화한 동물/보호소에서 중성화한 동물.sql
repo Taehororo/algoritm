@@ -1,0 +1,14 @@
+-- 코드를 입력하세요
+WITH In_intact as (SELECT ANIMAL_ID
+FROM ANIMAL_INS
+WHERE SEX_UPON_INTAKE like('%Intact%')
+),
+Out_Spayed as (
+SELECT ANIMAL_ID, ANIMAL_TYPE, NAME
+FROM ANIMAL_OUTS
+WHERE NOT SEX_UPON_OUTCOME like('%Intact%')
+)
+
+SELECT b.ANIMAL_ID, b.ANIMAL_TYPE, b.NAME
+FROM In_intact as a
+JOIN Out_Spayed as b on a.ANIMAL_ID = b.ANIMAL_ID
